@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+          
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: rgba(52, 58, 64, 1);
+            overflow: hidden;
+            padding: 0;
+            width: 100%;
+            position: fixed; /* Fixed position */
+            top: 0; /* Stick to the top */
+            z-index: 1000; /* Stay above other content */
+            transition: top 0.3s; /* Smooth transition */
+        }
+
+        .navbar.hidden {
+            top: -100px; /* Move navbar out of view */
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar-right {
+            margin-right: 50px;
+            font-size: 35px;
+        }
+
+        /* .navbar-right .fa
+        {
+            font-size: 30px;
+        } */
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+        }
+        .navbar-left img {
+            height: 70px; /* Adjust as needed */
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .navbar-left span {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .navbar-center {
+            display: flex;
+            align-items: center;
+            margin: 25px auto;
+            margin-left: auto;
+            font-size: 17px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive design for mobile devices */
+@media (max-width: 768px) {
+
+
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .navbar-left, .navbar-center, .navbar-right {
+        margin: 35px;
+        text-align: center;
+    }
+    .navbar-left {
+        margin-bottom: 10px;
+    }
+    .navbar-left img {
+        height: 50px; /* Adjust as needed */
+    }
+
+
+    .navbar-center {
+        flex-direction: column;
+    }
+    .navbar-center a {
+        padding: 10px;
+        font-size: 20px;
+    }
+
+
+    .about-us, .contact-us, .social-menu {
+        padding: 20px 10px;
+    }
+    .about-us h2, .contact-us h2 {
+        font-size: 24px;
+    }
+    .about-us p {
+        font-size: 16px;
+    }
+
+
+    .home-header h1{
+        display: none;
+    }
+   
+
+
+    .home-header{
+        height: 0;
+        background-image: none;
+    }
+}
+
+
+        .home-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raghavfoundation.org.in/wp-content/uploads/2023/05/school-image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 580px; /* Adjust the height as needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            opacity: 0; /* Start with opacity 0 */
+            animation: fadeIn 0.8s ease-in forwards; /* Fade-in animation */
+        }
+
+        .home-header h1 {
+            font-size: 50px; /* Adjust the font size as needed */
+            margin: 0;
+              box-sizing: border-box;
+            padding-top: 70px;
+        }
+
+        .about-us, .contact-us {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .about-us h2, .contact-us h2 {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .about-us p {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .social-menu {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+            position: relative;
+        }
+
+        .social-menu ul {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .social-menu ul li {
+            list-style: none;
+            margin: 0 5px;
+        }
+
+        .social-menu ul li .fa {
+            color: #000000;
+            font-size: 25px;
+            line-height: 50px;
+            transition: .5s;
+        }
+
+        .social-menu ul li .fa:hover {
+            color: #ffffff;
+        }
+        
+      
+
+        .social-menu ul li a {
+            position: relative;
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            text-align: center;
+            transition: 0.5s;
+            transform: translate(0,0px);
+            box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-menu ul li a:hover {
+            transform: rotate(0deg) skew(0deg) translate(0, -10px);
+        }
+
+        .social-menu ul li:nth-child(1) a:hover {
+            background-color: #3b5999;
+        }
+
+        .social-menu ul li:nth-child(2) a:hover {
+            background-color: #55acee;
+        }
+
+        .social-menu ul li:nth-child(3) a:hover {
+            background-color: #e4405f;
+        }
+
+        .social-menu ul li:nth-child(4) a:hover {
+            background-color: #cd201f;
+        }
+
+        .social-menu ul li:nth-child(5) a:hover {
+            background-color: #0077B5;
+        }
+
+        .contact-details {
+            margin-top:110px;
+            color: #333;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1px;
+        }
+
+        .contact-info div {
+            margin: 0 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(52, 58, 64, 1);
+            color: white;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="navbar-left">
+        <img src="./Photos/download (2).jpeg" alt="School Logo">
+        <span class="translate" data-translate-en="IT School" data-translate-ar="مدرسة تكنولوجيا المعلومات">IT School</span>
+    </div>
+    
+    <div class="navbar-center">
+        <a href="index.html" class="translate" data-translate-en="Home" data-translate-ar="الصفحة الرئيسية">Home</a>
+        <a href="admissions.html" class="translate" data-translate-en="Admissions" data-translate-ar="القبول">Admissions</a>
+        <a href="academics.html" class="translate" data-translate-en="Academics" data-translate-ar="الأكاديميون">Academics</a>
+        <a href="submit.html" class="translate" data-translate-en="Submit Resume" data-translate-ar="إرسال السيرة الذاتية">Submit Resume</a>
+        <a href="gallery.html" class="translate" data-translate-en="Gallery" data-translate-ar="معرض الصور">Gallery</a>
+        <a href="#contact" class="translate" data-translate-en="Contact Us" data-translate-ar="اتصل بنا">Contact Us</a>
+    </div>
+    
+    <div class="navbar-right">
+        <a href="#" id="translate-button" class="translate" data-translate-en="Translate to Arabic" data-translate-ar="ترجمة إلى الإنجليزية"><i class="fa fa-language"></i></a>
+
+    </div>
+</div>
+
+<div class="home-header">
+    <h1 class="translate" data-translate-en="Welcome to Our School" data-translate-ar="مرحبا بكم في مدرستنا">Welcome to Our School</h1>
+</div>
+
+<div class="about-us">
+    <h2 class="translate" data-translate-en="About Us" data-translate-ar="معلومات عنا">About Us</h2>
+    <p class="translate" data-translate-en="Our school is dedicated to providing the highest quality education to our students. With a focus on academic excellence, we foster a supportive and inclusive environment where every student can thrive. Our experienced faculty, modern facilities, and innovative programs are designed to prepare students for future success." data-translate-ar="مدرستنا مكرسة لتوفير أعلى جودة من التعليم لطلابنا. مع التركيز على التميز الأكاديمي، نعمل على تعزيز بيئة داعمة وشاملة حيث يمكن لكل طالب أن يزدهر. تم تصميم هيئة التدريس ذات الخبرة والمرافق الحديثة والبرامج المبتكرة لدينا لإعداد الطلاب للنجاح في المستقبل.">Our school is dedicated to providing the highest quality education to our students. With a focus on academic excellence, we foster a supportive and inclusive environment where every student can thrive. Our experienced faculty, modern facilities, and innovative programs are designed to prepare students for future success.</p>
+    <p class="translate" data-translate-en="At our school, we believe in the holistic development of each student. We offer a wide range of extracurricular activities, including sports, arts, and community service, to help students discover their passions and develop essential life skills. Join us in our mission to create a brighter future for all." data-translate-ar="في مدرستنا، نؤمن بالتنمية الشاملة لكل طالب. نحن نقدم مجموعة واسعة من الأنشطة اللامنهجية، بما في ذلك الرياضة والفنون وخدمة المجتمع، لمساعدة الطلاب على اكتشاف شغفهم وتطوير مهارات الحياة الأساسية. انضم إلينا في مهمتنا لخلق مستقبل أكثر إشراقًا للجميع.">At our school, we believe in the holistic development of each student. We offer a wide range of extracurricular activities, including sports, arts, and community service, to help students discover their passions and develop essential life skills. Join us in our mission to create a brighter future for all.</p>
+
+    <h2 class="translate" data-translate-en="Managers Word" data-translate-ar="كلمة المدير">Managers Word</h2>
+    <p class="translate" data-translate-en="Our school is dedicated to providing the highest quality education to our students. With a focus on academic excellence, we foster a supportive and inclusive environment where every student can thrive. Our experienced faculty, modern facilities, and innovative programs are designed to prepare students for future success." data-translate-ar="مدرستنا مكرسة لتوفير أعلى جودة من التعليم لطلابنا. مع التركيز على التميز الأكاديمي، نعمل على تعزيز بيئة داعمة وشاملة حيث يمكن لكل طالب أن يزدهر. تم تصميم هيئة التدريس ذات الخبرة والمرافق الحديثة والبرامج المبتكرة لدينا لإعداد الطلاب للنجاح في المستقبل.">Our school is dedicated to providing the highest quality education to our students. With a focus on academic excellence, we foster a supportive and inclusive environment where every student can thrive. Our experienced faculty, modern facilities, and innovative programs are designed to prepare students for future success.</p>
+    <p class="translate" data-translate-en="At our school, we believe in the holistic development of each student. We offer a wide range of extracurricular activities, including sports, arts, and community service, to help students discover their passions and develop essential life skills. Join us in our mission to create a brighter future for all." data-translate-ar="في مدرستنا، نؤمن بالتنمية الشاملة لكل طالب. نحن نقدم مجموعة واسعة من الأنشطة اللامنهجية، بما في ذلك الرياضة والفنون وخدمة المجتمع، لمساعدة الطلاب على اكتشاف شغفهم وتطوير مهارات الحياة الأساسية. انضم إلينا في مهمتنا لخلق مستقبل أكثر إشراقًا للجميع.">At our school, we believe in the holistic development of each student. We offer a wide range of extracurricular activities, including sports, arts, and community service, to help students discover their passions and develop essential life skills. Join us in our mission to create a brighter future for all.</p>
+</div>
+
+<div class="social-menu">
+    <h2 id="contact" class="translate" data-translate-en="Contact Us" data-translate-ar="اتصل بنا">Contact Us</h2>
+    <ul>
+        <li><a href="https://www.facebook.com/YourPage" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://twitter.com/YourProfile" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://www.instagram.com/YourProfile" target="_blank"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="https://www.youtube.com/YourChannel" target="_blank"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/YourProfile" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+    </ul>
+    <div class="contact-details">
+        <div class="contact-info">
+            <div>
+                <i class="fa fa-phone"></i> <span class="translate" data-translate-en="+1 234 567 890" data-translate-ar="+1 234 567 890">+1 234 567 890</span>
+            </div>
+            <div>
+                <i class="fa fa-map-marker"></i> <span class="translate" data-translate-en="1234 School St, Education City, USA" data-translate-ar="1234 شارع المدرسة، مدينة التعليم، الولايات المتحدة الأمريكية">1234 School St, Education City, USA</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <span class="translate" data-translate-en="&copy; 2024 School Name. All rights reserved." data-translate-ar="&copy; 2024 اسم المدرسة. جميع الحقوق محفوظة.">&copy; 2024 School Name. All rights reserved.</span>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            // Downscroll
+            navbar.classList.add('hidden');
+        } else {
+            // Upscroll
+            navbar.classList.remove('hidden');
+        }
+        lastScrollTop = scrollTop;
+    });
+
+    const translations = {
+        en: {
+            "IT School": "IT School",
+            "Home": "Home",
+            "Admissions": "Admissions",
+            "Academics": "Academics",
+            "Submit Resume": "Submit Resume",
+            "Gallery": "Gallery",
+            "Contact Us": "Contact Ur",
+            "Translate to Arabic": "الترجمة إلى الإنجليزية",
+            "Welcome to Our School": "Welcome to Our School",
+            "About Us": "About Us",
+            "Our school is dedicated to providing the highest quality education to our students. With a focus on academic excellence, we foster a supportive and inclusive environment where every student can thrive. Our experienced faculty, modern facilities, and innovative programs are designed to prepare students for future success.": "Our school is dedicated to providing the highest quality education to our students. With a focus on academic excellence, we foster a supportive and inclusive environment where every student can thrive. Our experienced faculty, modern facilities, and innovative programs are designed to prepare students for future success.",
+            "At our school, we believe in the holistic development of each student. We offer a wide range of extracurricular activities, including sports, arts, and community service, to help students discover their passions and develop essential life skills. Join us in our mission to create a brighter future for all.": "At our school, we believe in the holistic development of each student. We offer a wide range of extracurricular activities, including sports, arts, and community service, to help students discover their passions and develop essential life skills. Join us in our mission to create a brighter future for all.",
+            "+1 234 567 890": "+1 234 567 890",
+            "1234 School St, Education City, USA": "1234 School St, Education City, USA",
+            "&copy; 2024 School Name. All rights reserved.": "&copy; 2024 School Name. All rights reserved."
+        },
+        ar: {
+            "IT School": "مدرسة تكنولوجيا المعلومات",
+            "Home": "الصفحة الرئيسية",
+            "Admissions": "القبول",
+            "Academics": "الأكاديميون",
+            "Submit Resume": "إرسال السيرة الذاتية",
+            "Gallery": "معرض الصور",
+            "Contact Us": "اتصل بنا",
+            "Login": "تسجيل الدخول",
+            "Translate to Arabic": "Translate to Arabic",
+            "Welcome to Our School": "مرحبا بكم في مدرستنا",
+            "About Us": "معلومات عنا",
+            "Our school is dedicated to providing the highest quality education to our students. With a focus on academic excellence, we foster a supportive and inclusive environment where every student can thrive. Our experienced faculty, modern facilities, and innovative programs are designed to prepare students for future success.": "مدرستنا مكرسة لتوفير أعلى جودة من التعليم لطلابنا. مع التركيز على التميز الأكاديمي، نعمل على تعزيز بيئة داعمة وشاملة حيث يمكن لكل طالب أن يزدهر. تم تصميم هيئة التدريس ذات الخبرة والمرافق الحديثة والبرامج المبتكرة لدينا لإعداد الطلاب للنجاح في المستقبل.",
+            "At our school, we believe in the holistic development of each student. We offer a wide range of extracurricular activities, including sports, arts, and community service, to help students discover their passions and develop essential life skills. Join us in our mission to create a brighter future for all.": "في مدرستنا، نؤمن بالتنمية الشاملة لكل طالب. نحن نقدم مجموعة واسعة من الأنشطة اللامنهجية، بما في ذلك الرياضة والفنون وخدمة المجتمع، لمساعدة الطلاب على اكتشاف شغفهم وتطوير مهارات الحياة الأساسية. انضم إلينا في مهمتنا لخلق مستقبل أكثر إشراقًا للجميع.",
+            "+1 234 567 890": "+1 234 567 890",
+            "1234 School St, Education City, USA": "1234 شارع المدرسة، مدينة التعليم، الولايات المتحدة الأمريكية",
+            "&copy; 2024 School Name. All rights reserved.": "&copy; 2024 اسم المدرسة. جميع الحقوق محفوظة."
+        }
+    };
+
+    let currentLanguage = 'en';
+    $('#translate-button').click(function() {
+    currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+    $('.translate').each(function() {
+        const key = $(this).data('translate-' + currentLanguage);
+        $(this).text(key);
+    });
+    $('#translate-button').html('<i class="fa fa-language"></i> ' );
+});
+
+</script>
+</body>
+</html>
